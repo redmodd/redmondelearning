@@ -1,0 +1,37 @@
+footer {
+   background-color: #E0EAE7;
+   margin-top: 50px;
+   padding: 25px 0;
+}
+
+.name {
+    color: #4AB19A;
+    font-size: 1.10em;
+}
+
+.social-container {
+    margin-bottom: 10px;
+}
+
+.social {
+    color: #4AB19A;
+}
+
+.name:hover,
+.name:active,
+.social:hover,
+.social:active {
+    color: #0E341B;
+}
+
+.footer {
+    color: #4AB19A;
+}
+
+.madeWith {
+    font-size: 0.75em;
+}
+
+.heart {
+    color: #FD626A;
+}

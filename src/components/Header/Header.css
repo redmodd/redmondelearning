@@ -1,0 +1,50 @@
+.hero-section {
+    background-color: #E0EAE7;
+    padding: 100px 0;
+    background-image: url(./images/header_background.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 50px;
+}
+
+.hero-heading {
+    text-align: start;
+}
+
+.avatar-container {
+    width: 250px;
+    height: auto;
+}
+
+.avatar {
+    padding-bottom: 150px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+@media only screen and (max-width: 764px) {
+    .hero-section {
+        background-image: none;
+        padding: 0;
+    }
+    
+    .avatar {
+        padding: 100px 10px 10px 10px;
+    }
+    
+}
+
+@media only screen and (max-width: 708px) {
+    .hero-heading {
+        text-align: center;
+    }
+
+    .hero-paragraph {
+        text-align: center;
+    }
+}
+
+
+
+

@@ -1,0 +1,223 @@
+/* COLOURS 
+pale green: #E0EAE7
+light green: #4AB19A
+medium green: #1E836C
+dark green: #0E341B
+grey: #555
+*/
+
+/* ----------------------------------------------- */
+/* BASIC SETUP */
+/* ----------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    font-family: 'Open Sans', 'Arial', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: #555;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    line-height: 1.5;
+    letter-spacing: 1px;
+  }
+  
+  html,
+  body {
+    background-color: #f4f4f4;
+    height: 100%;
+  }
+  
+  .clearfix {zoom: 1;}
+  .clearfix:after {
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+  }
+
+  .App {
+    height: 100%;
+  }
+
+  /* ----------------------------------------------- */
+  /* REUSABLE COMPONENTS */
+  /* ----------------------------------------------- */
+  
+  hr {
+    margin: 50px auto;
+    width: 7%;
+    text-align: center;
+    border: solid 1px #999;
+  }
+  
+  .box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .box-column {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .box div {
+    margin: 10px 0;  
+  }
+
+  /* ----- TYPOGRAPHY ----- */
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 15px 0;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 2.25em;
+    color: #1E836C;
+  }
+  
+  h2 {
+    font-size: 1.75em;
+    color: #4AB19A;
+  }
+
+  h3 {
+    font-size: 1.2em;
+    color: #fff;
+  }
+
+  h4 {
+    font-weight: 400;
+    color: #fff;
+  }
+
+  p {
+    margin-bottom: 10px;
+  }
+
+  span {
+    color: #fff;
+  }
+  
+  /* ----- LINKS ----- */
+  
+  a:link,
+  a:visited {
+    text-decoration: none;
+  }
+  
+
+
+  /* ----- BUTTONS ----- */
+ .btn-blue,
+ .btn-green {
+    position: relative;
+    display: block;
+    margin: 30px auto;
+    padding: 1em 3em;
+    max-width: 250px;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    border-width: 0;
+    outline: none;
+    border-radius: 6px;
+    -webkit-transition: background-color .3s;
+    -o-transition: background-color .3s;
+    transition: background-color .3s;
+    cursor: pointer;
+  }
+
+  .btn-blue {
+    background-color: #3A4C5A;
+  }
+
+  .btn-blue:hover, .btn-blue:focus {
+    background-color: #262E33;
+    color: #fff;
+  }
+
+  .btn-green {
+    background-color: #1E836C;
+  }
+
+  .btn-green:hover, .btn-green:focus {
+    background-color: #0E341B;
+    color: #fff;
+  }
+   
+  
+  /* ----------------------------------------------- */
+  /* Queries */
+  /* ----------------------------------------------- */
+  @media only screen and (max-width: 1250px) {
+    .box,
+    .box-column {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+  }
+  
+  @media only screen and (max-width: 1037px) {
+    .box div,
+    .box-column div {
+        margin-top: 10px;
+    }
+  }
+
+  @media only screen and (max-width: 871px) {
+    hr {
+      margin: 35px auto;
+    }
+  }
+  
+  @media only screen and (max-width: 575px) {
+    .box div {
+      margin-top: 0px;
+    }
+  
+    * {
+      font-size: 16px;
+    }
+  }
+  

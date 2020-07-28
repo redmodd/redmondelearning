@@ -1,0 +1,18 @@
+.close-icon {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    color: #4AB19A;
+    font-size: 2em;
+}
+
+.close-icon:hover,
+.close-icon:active {
+    color: #0E341B;
+}
