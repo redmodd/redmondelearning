@@ -1,6 +1,6 @@
 import React from 'react';
 import './Toolbar.css';
-import DrawerToggleButton from '../SideDrawer/DrawerToggleButton';
+import DrawerOpenButton from '../SideDrawer/DrawerOpenButton';
 
 const Toolbar = props => {
     return(
@@ -18,7 +18,7 @@ const Toolbar = props => {
                     </ul>
                 </div>
                 <div className="toolbar-toggle-button">
-                    <DrawerToggleButton onClick={props.drawerClickHandler}/>
+                    <DrawerOpenButton onClick={props.open}/>
                 </div>
             </nav>
         </header>

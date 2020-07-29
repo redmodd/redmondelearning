@@ -3,12 +3,8 @@ import './SideDrawer.css';
 import DrawerCloseButton from './DrawerCloseButton';
 
 const sideDrawer = props => {
-    let drawerClasses = 'sideDrawer';
-    if (props.show) {
-        drawerClasses = 'sideDrawer open';
-    }
     return(
-        <nav className={drawerClasses}>
+        <nav className={`sideDrawer ${props.open ? 'open' : ''}`}>
             <div className="sideDrawer-header">
                 <div className="sideDrawer-nav">
                     <div>
@@ -16,15 +12,15 @@ const sideDrawer = props => {
                     </div>
                     <div className="spacer"></div>
                     <div>
-                        <DrawerCloseButton onClick={props.drawerClose}/>
+                        <DrawerCloseButton onClick={props.close}/>
                     </div>
                 </div>
             </div>       
             <div> 
                 <ul>
-                    <li><a className="sideDrawer-list" href="#about" onClick={props.drawerClose}>About</a></li>
-                    <li><a className="sideDrawer-list" href="#portfolio" onClick={props.drawerClose}>Portfolio</a></li>
-                    <li><a className="sideDrawer-list" href="#contact" onClick={props.drawerClose}>Contact</a></li>
+                    <li><a className="sideDrawer-list" href="#about" onClick={props.close}>About</a></li>
+                    <li><a className="sideDrawer-list" href="#portfolio" onClick={props.close}>Portfolio</a></li>
+                    <li><a className="sideDrawer-list" href="#contact" onClick={props.close}>Contact</a></li>
                 </ul>
             </div>
         </nav>

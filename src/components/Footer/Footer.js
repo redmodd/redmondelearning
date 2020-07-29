@@ -9,7 +9,7 @@ const Footer = () => {
                     <a className ="social" href="https://www.linkedin.com/in/derek-redmond/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 </div>
                 <div>
-                    <p className="madeWith">Made with <span className="heart">&#10084;</span> by <a className="name" href="www.redmondelearning.ca" target="blank" rel="noopener noreferrer">Derek Redmond</a>.</p>
+                    <p className="madeWith">Made with <span className="heart">&#10084;</span> by <a className="name" href="#header" target="blank" rel="noopener noreferrer">Derek Redmond</a>.</p>
                 </div>
             </div>
            

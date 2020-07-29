@@ -1,7 +1,7 @@
 import React from 'react';
-import './DrawerToggleButton.css';
+import './DrawerOpenButton.css';
 
-const drawerToggleButton = props => {
+const drawerOpenButton = props => {
     return(
         <button className="toggle-button" onClick={props.onClick}>
             <div className="toggle-button-line" />
@@ -11,4 +11,4 @@ const drawerToggleButton = props => {
     );
 }
 
-export default drawerToggleButton;
+export default drawerOpenButton;

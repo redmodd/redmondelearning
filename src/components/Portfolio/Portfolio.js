@@ -3,8 +3,8 @@ import './Portfolio.css';
 import PortfolioItem from './PortfolioItem';
 
 const Portfolio = () => {    
-    const portfolioItems = {
-        privacy: {
+    const portfolioItems = [
+       {
             className: "card privacy",
             portfolioType: "images-landscape-container",
             imageType: "image-landscape",
@@ -16,7 +16,7 @@ const Portfolio = () => {
             itemUrl: "https://www.redmondelearning.ca/portfolio/Privacy/story.html",
             buttonText: "Live Demo"
         },
-        map: {
+       {
             className: "card map",
             portfolioType: "images-landscape-container",
             imageType: "image-landscape",
@@ -28,7 +28,7 @@ const Portfolio = () => {
             itemUrl: "https://www.redmondelearning.ca/portfolio/MAP/story.html",
             buttonText: "Live Demo"
         },
-        jl: {
+       {
             className: "card jl",
             portfolioType: "images-portrait-container",
             imageType: "image-portrait",
@@ -40,7 +40,7 @@ const Portfolio = () => {
             itemUrl: "https://www.redmondelearning.ca/portfolio/JL/index.html",
             buttonText: "Live Demo"
         },
-        dataExcellence: {
+        {
             className: "card dataExcellence",
             portfolioType: "images-portrait-container",
             imageType: "image-portrait",
@@ -52,7 +52,7 @@ const Portfolio = () => {
             itemUrl: "https://www.redmondelearning.ca/portfolio/DE/index.html",
             buttonText: "Live Demo"
         },
-        wpv: {
+        {
             className: "card wpv",
             portfolioType: "images-landscape-container",
             imageType: "image-landscape",
@@ -64,7 +64,7 @@ const Portfolio = () => {
             itemUrl: "https://www.redmondelearning.ca/portfolio/WPV/story.html",
             buttonText: "Live Demo"
         },
-        ip: {
+        {
             className: "card ip",
             portfolioType: "images-landscape-container",
             imageType: "image-landscape",
@@ -76,7 +76,7 @@ const Portfolio = () => {
             itemUrl: "https://www.redmondelearning.ca/portfolio/IP/story.html",
             buttonText: "Live Demo"
         },
-        website: {
+        {
             className: "card website",
             portfolioType: "images-landscape-container",
             imageType: "image-landscape",
@@ -88,7 +88,7 @@ const Portfolio = () => {
             itemUrl: "https://www.redmondelearning.ca/",
             buttonText: "Live Demo"
         },
-        paper: {
+        {
             className: "card paper",
             portfolioType: "images-landscape-container",
             imageType: "image-landscape",
@@ -100,7 +100,7 @@ const Portfolio = () => {
             itemUrl: "https://online-journals.org/index.php/i-jet/article/view/11898",
             buttonText: "Read Paper"
         },
-        pumpkin: {
+        {
             className: "card pumpkin",
             portfolioType: "images-landscape-container",
             imageType: "image-landscape",
@@ -112,7 +112,7 @@ const Portfolio = () => {
             itemUrl: "https://www.redmondelearning.ca/portfolio/PumpkinGame/story.html",
             buttonText: "Live Demo"
         }
-    }
+    ]
     return(
         <section>
             <div className="box-column">
@@ -124,15 +124,20 @@ const Portfolio = () => {
                 </div>
             </div>          
             <div className="box-card">
-                <PortfolioItem className={portfolioItems.privacy.className} portfolioType={portfolioItems.privacy.portfolioType} imageType={portfolioItems.privacy.imageType} imgSrc={portfolioItems.privacy.imgSrc} alt={portfolioItems.privacy.alt} header={portfolioItems.privacy.header} subtitle={portfolioItems.privacy.subtitle} text={portfolioItems.privacy.text} itemUrl={portfolioItems.privacy.itemUrl} buttonText={portfolioItems.privacy.buttonText}/>
-                <PortfolioItem className={portfolioItems.map.className} portfolioType={portfolioItems.map.portfolioType} imageType={portfolioItems.map.imageType} imgSrc={portfolioItems.map.imgSrc} alt={portfolioItems.map.alt} header={portfolioItems.map.header} subtitle={portfolioItems.map.subtitle} text={portfolioItems.map.text} itemUrl={portfolioItems.map.itemUrl} buttonText={portfolioItems.map.buttonText}/>
-                <PortfolioItem className={portfolioItems.jl.className} portfolioType={portfolioItems.jl.portfolioType} imageType={portfolioItems.jl.imageType} imgSrc={portfolioItems.jl.imgSrc} alt={portfolioItems.jl.alt} header={portfolioItems.jl.header} subtitle={portfolioItems.jl.subtitle} text={portfolioItems.jl.text} itemUrl={portfolioItems.jl.itemUrl} buttonText={portfolioItems.jl.buttonText}/>
-                <PortfolioItem className={portfolioItems.dataExcellence.className} portfolioType={portfolioItems.dataExcellence.portfolioType} imageType={portfolioItems.dataExcellence.imageType} imgSrc={portfolioItems.dataExcellence.imgSrc} alt={portfolioItems.dataExcellence.alt} header={portfolioItems.dataExcellence.header} subtitle={portfolioItems.dataExcellence.subtitle} text={portfolioItems.dataExcellence.text} itemUrl={portfolioItems.dataExcellence.itemUrl} buttonText={portfolioItems.dataExcellence.buttonText}/>
-                <PortfolioItem className={portfolioItems.wpv.className} portfolioType={portfolioItems.wpv.portfolioType} imageType={portfolioItems.wpv.imageType} imgSrc={portfolioItems.wpv.imgSrc} alt={portfolioItems.wpv.alt} header={portfolioItems.wpv.header} subtitle={portfolioItems.wpv.subtitle} text={portfolioItems.wpv.text} itemUrl={portfolioItems.wpv.itemUrl} buttonText={portfolioItems.wpv.buttonText}/>
-                <PortfolioItem className={portfolioItems.ip.className} portfolioType={portfolioItems.ip.portfolioType} imageType={portfolioItems.ip.imageType} imgSrc={portfolioItems.ip.imgSrc} alt={portfolioItems.ip.alt} header={portfolioItems.ip.header} subtitle={portfolioItems.ip.subtitle} text={portfolioItems.ip.text} itemUrl={portfolioItems.ip.itemUrl} buttonText={portfolioItems.ip.buttonText}/>
-                <PortfolioItem className={portfolioItems.website.className} portfolioType={portfolioItems.website.portfolioType} imageType={portfolioItems.website.imageType} imgSrc={portfolioItems.website.imgSrc} alt={portfolioItems.website.alt} header={portfolioItems.website.header} subtitle={portfolioItems.website.subtitle} text={portfolioItems.website.text} itemUrl={portfolioItems.website.itemUrl} buttonText={portfolioItems.website.buttonText}/>
-                <PortfolioItem className={portfolioItems.paper.className} portfolioType={portfolioItems.paper.portfolioType} imageType={portfolioItems.paper.imageType} imgSrc={portfolioItems.paper.imgSrc} alt={portfolioItems.paper.alt} header={portfolioItems.paper.header} subtitle={portfolioItems.paper.subtitle} text={portfolioItems.paper.text} itemUrl={portfolioItems.paper.itemUrl} buttonText={portfolioItems.paper.buttonText}/>
-                <PortfolioItem className={portfolioItems.pumpkin.className} portfolioType={portfolioItems.pumpkin.portfolioType} imageType={portfolioItems.pumpkin.imageType} imgSrc={portfolioItems.pumpkin.imgSrc} alt={portfolioItems.pumpkin.alt} header={portfolioItems.pumpkin.header} subtitle={portfolioItems.pumpkin.subtitle} text={portfolioItems.pumpkin.text} itemUrl={portfolioItems.pumpkin.itemUrl} buttonText={portfolioItems.pumpkin.buttonText}/>
+                {portfolioItems.map (item => {
+                    return <PortfolioItem 
+                        className={item.className}
+                        portfolioType={item.portfolioType} 
+                        imageType={item.imageType} 
+                        imgSrc={item.imgSrc} 
+                        alt={item.alt} 
+                        header={item.header} 
+                        subtitle={item.subtitle} 
+                        text={item.text} 
+                        itemUrl={item.itemUrl} 
+                        buttonText={item.buttonText}
+                        />
+                })}
             </div>
             <hr></hr>
         </section>

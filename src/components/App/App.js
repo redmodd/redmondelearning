@@ -14,7 +14,7 @@ import Footer from '../Footer/Footer';
 const App = () => {
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false)
 
-    const drawerToggleClickHandler = () => {     
+    const openSideDrawer = () => {     
       setSideDrawerOpen(true)
   };
   
@@ -30,8 +30,8 @@ const App = () => {
  
     return (
       <div className="App">
-        <Toolbar drawerClickHandler={drawerToggleClickHandler} />
-        <SideDrawer show={sideDrawerOpen} drawerClose={closeSideDrawer}/>
+        <Toolbar open={openSideDrawer} />
+        <SideDrawer open={sideDrawerOpen} close={closeSideDrawer}/>
         <Header />
         <Services />
         <Portfolio />
