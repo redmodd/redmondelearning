@@ -14,7 +14,8 @@ const Portfolio = () => {
             subtitle: "Storyline 360",
             text: "This eLearning module spices it up with some gamification. Inspired by Jeopardy, learners face off against two characters, wager points, and earn achievements.",
             itemUrl: "https://www.redmondelearning.ca/portfolio/Privacy/story.html",
-            buttonText: "Live Demo"
+            buttonText: "Live Demo",
+            id: "privacy"
         },
        {
             className: "card map",
@@ -26,7 +27,8 @@ const Portfolio = () => {
             subtitle: "Storyline 360",
             text: "Designed for the 50+ age group, this eLearning module reviews the 10 week long course. The module combines gamification and soothing music and colours to add a bit of fun.",
             itemUrl: "https://www.redmondelearning.ca/portfolio/MAP/story.html",
-            buttonText: "Live Demo"
+            buttonText: "Live Demo",
+            id: "map"
         },
        {
             className: "card jl",
@@ -38,7 +40,8 @@ const Portfolio = () => {
             subtitle: "Rise 360",
             text: "This eLearning module combines a modern design and realistic activities. The content has been removed and replaced with demo text.",
             itemUrl: "https://www.redmondelearning.ca/portfolio/JL/index.html",
-            buttonText: "Live Demo"
+            buttonText: "Live Demo",
+            id: "jl"
         },
         {
             className: "card dataExcellence",
@@ -50,7 +53,8 @@ const Portfolio = () => {
             subtitle: "dominKnow Flow",
             text: "This demo eLearning module shows a modern design with pleasing graphics. Only Chapter 2 contains content in this demo.",
             itemUrl: "https://www.redmondelearning.ca/portfolio/DE/index.html",
-            buttonText: "Live Demo"
+            buttonText: "Live Demo",
+            id: "de"
         },
         {
             className: "card wpv",
@@ -62,7 +66,8 @@ const Portfolio = () => {
             subtitle: "Storyline 360 & VYOND",
             text: "This eLearning module has a fun design combined with realistic activities and animated scenarios. Learners are challenged make critical decisions in a realistic but safe setting.",
             itemUrl: "https://www.redmondelearning.ca/portfolio/WPV/story.html",
-            buttonText: "Live Demo"
+            buttonText: "Live Demo",
+            id: "wpv"
         },
         {
             className: "card ip",
@@ -74,7 +79,8 @@ const Portfolio = () => {
             subtitle: "Storyline 360",
             text: "This eLearning module has a modern design with complex user tracking through the dashboard and gamified knowledge checks.",
             itemUrl: "https://www.redmondelearning.ca/portfolio/IP/story.html",
-            buttonText: "Live Demo"
+            buttonText: "Live Demo",
+            id: "ip"
         },
         {
             className: "card website",
@@ -86,7 +92,8 @@ const Portfolio = () => {
             subtitle: "React.js",
             text: "The website you are currently on! A clean, modern and mobile website made with React.js.",
             itemUrl: "https://www.redmondelearning.ca/",
-            buttonText: "Live Demo"
+            buttonText: "Live Demo",
+            id: "website"
         },
         {
             className: "card paper",
@@ -98,7 +105,8 @@ const Portfolio = () => {
             subtitle: "Academic paper",
             text: "Check out my recent publication published in the International Journal of Emerging Technologies in Learning.",
             itemUrl: "https://online-journals.org/index.php/i-jet/article/view/11898",
-            buttonText: "Read Paper"
+            buttonText: "Read Paper",
+            id: "paper"
         },
         {
             className: "card pumpkin",
@@ -110,7 +118,8 @@ const Portfolio = () => {
             subtitle: "Storyline 360",
             text: "This proof of concept is a fun game for kids to learn about gardening through growing a pumpkin. This is a proof of concept and is not fully functional.",
             itemUrl: "https://www.redmondelearning.ca/portfolio/PumpkinGame/story.html",
-            buttonText: "Live Demo"
+            buttonText: "Live Demo",
+            id: "pumpkin"
         }
     ]
     return(
@@ -136,6 +145,7 @@ const Portfolio = () => {
                         text={item.text} 
                         itemUrl={item.itemUrl} 
                         buttonText={item.buttonText}
+                        key={item.id}
                         />
                 })}
             </div>

@@ -10,7 +10,8 @@ const Services = () => {
             alt: "pen",
             descriptionType: "services-description-1",
             header: "Instructional Design",
-            description: "We don't deliver content for the sake of delivering content, we deliver content so a learner can do something with that content. Let's design education around what the learner is expected to do in a realistic setting."
+            description: "We don't deliver content for the sake of delivering content, we deliver content so a learner can do something with that content. Let's design education around what the learner is expected to do in a realistic setting.",
+            id: "instructionalDesign"
         },
         {
             imgType: "services-image-2",
@@ -18,7 +19,8 @@ const Services = () => {
             alt: "start and finish line",
             descriptionType: "services-description-2",
             header: "Learning Experience",
-            description: "When creating learning, we don't just think about the content the learner will engage with. The learning experience spans from registration through to putting content into action in the real world. We must consider the entire learning experience, from start to finish."
+            description: "When creating learning, we don't just think about the content the learner will engage with. The learning experience spans from registration through to putting content into action in the real world. We must consider the entire learning experience, from start to finish.",
+            id: "learningExperience"
         },
         {
             imgType: "",
@@ -26,7 +28,8 @@ const Services = () => {
             alt: "tablet and smartphone",
             descriptionType: "services-description-1",
             header: "Learning Environment",
-            description: "The needs of the learner and the needs of the content must be considered when creating a learning environment. From readily available online environments or custom built online environments to in-person classrooms, let's build a learning environment that meets the needs of your learners and content."
+            description: "The needs of the learner and the needs of the content must be considered when creating a learning environment. From readily available online environments or custom built online environments to in-person classrooms, let's build a learning environment that meets the needs of your learners and content.",
+            id: "learningEnvironment"
         }
     ]
     
@@ -44,6 +47,7 @@ const Services = () => {
                         descriptionType={item.descriptionType} 
                         header={item.header} 
                         description={item.description} 
+                        key={item.id}
                         />
                 })}
 
