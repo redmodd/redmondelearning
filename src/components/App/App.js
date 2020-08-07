@@ -26,7 +26,7 @@ const App = () => {
       ReactGa.initialize('UA-171779412-1')
       //to report page view
       ReactGa.pageview(window.location.pathname)
-    },[])
+    }, []);
  
     return (
       <div className="App">
