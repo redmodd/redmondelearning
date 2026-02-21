@@ -3,42 +3,27 @@
   "homepage": ".",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest"
+  },
   "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "web-vitals": "^4.2.4"
+  },
+  "devDependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-scripts": "5.0.0",
-    "web-vitals": "^4.2.4"
-  },
-  "overrides": {
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "@vitejs/plugin-react": "^4.3.4",
+    "jsdom": "^25.0.1",
+    "vite": "7.3.1",
+    "vitest": "^2.1.6"
   }
 }
