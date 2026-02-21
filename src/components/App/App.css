@@ -1,223 +1,163 @@
-/* COLOURS 
-pale green: #E0EAE7
-light green: #4AB19A
-medium green: #1E836C
-dark green: #0E341B
-grey: #555
-*/
-
 /* ----------------------------------------------- */
 /* BASIC SETUP */
 /* ----------------------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons&display=swap');
-
 * {
-    margin: 0;
-    padding: 0;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    font-family: 'Open Sans', 'Arial', sans-serif;
-    font-weight: 300;
-    font-size: 18px;
-    color: #555;
-    text-rendering: optimizeLegibility;
-    overflow-x: hidden;
-    line-height: 1.5;
-    letter-spacing: 1px;
-  }
-  
-  html,
-  body {
-    background-color: #f4f4f4;
-    height: 100%;
-  }
-  
-  .clearfix {zoom: 1;}
-  .clearfix:after {
-    content: '.';
-    clear: both;
-    display: block;
-    height: 0;
-    visibility: hidden;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #333;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  line-height: 1.5;
 
-  .App {
-    height: 100%;
-  }
+}
 
-  /* ----------------------------------------------- */
-  /* REUSABLE COMPONENTS */
-  /* ----------------------------------------------- */
-  
-  hr {
-    margin: 50px auto;
-    width: 7%;
-    text-align: center;
-    border: solid 1px #999;
-  }
-  
-  .box {
-    display: -webkit-box;
-    display: -ms-flexbox;
+body {
+  background-color: #F6F6F7;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* ----------------------------------------------- */
+/* REUSABLE COMPONENTS */
+/* ----------------------------------------------- */
+.spacer {
+  margin: 25px;
+}
+
+.row,
+.column {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.row {
+  align-items: stretch;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 50px 0px; 
+}
+
+.column {
+  align-items: center;
+  flex-direction: column;
+}
+
+.row div {
+  margin: 10px 5px;  
+}
+
+/* ----- TYPOGRAPHY ----- */
+h1,
+h2,
+h3 {
+  margin: 15px 0;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.25em;
+}
+
+h2 {
+  font-size: 1.75em;
+  color: #1e836c;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+.textCenter {
+  text-align: center;
+  padding: 0 20px;
+}
+
+span {
+  color: #fff;
+}
+
+/* ----- LINKS ----- */
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+/* ----- BUTTONS ----- */
+.btn-green {
+  position: relative;
+  display: block;
+  margin: 30px auto;
+  padding: 1em 3em;
+  max-width: 250px;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+  border-width: 0;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #1E836C;
+}
+
+.btn-green:hover, .btn-green:focus {
+  background-color: #0E341B;
+  color: #fff;
+  transition: all .4s ease;
+}
+
+/* ----------------------------------------------- */
+/* CARDS */
+/* ----------------------------------------------- */
+
+.servicesItem,
+.toolItem,
+.portfolioItem {
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-  
-  .box-column {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-  }
-  
-  .box div {
-    margin: 10px 0;  
-  }
+    justify-content: center;
+    flex-direction: column;   
+    background-color: #fff; 
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(39,44,49,.06),1px 3px 8px rgba(39,44,49,.03);
+}
 
-  /* ----- TYPOGRAPHY ----- */
-  h1,
-  h2,
-  h3,
-  h4 {
-    margin: 15px 0;
-    letter-spacing: 1px;
-    word-spacing: 2px;
-    text-align: center;
-  }
-  
-  h1 {
-    font-size: 2.25em;
-    color: #1E836C;
-  }
-  
-  h2 {
-    font-size: 1.75em;
-    color: #4AB19A;
-  }
+.servicesItem {
+  align-items: center;
+  width: 250px;
+}
 
-  h3 {
-    font-size: 1.2em;
-    color: #fff;
-  }
+.toolItem {
+  align-items: center;
+  width: 200px;
+}
 
-  h4 {
-    font-weight: 400;
-    color: #fff;
-  }
+.portfolioItem {
+  max-width: 400px;
+  margin: 10px 5px;
+  transition: all .5s ease;
+}
 
-  p {
-    margin-bottom: 10px;
-  }
+.portfolioItem:hover {
+  box-shadow: 0px 0px 5px rgba(39,44,49,.07),1px 6px 12px rgba(39,44,49,.04);
+  transition: all .4s ease;
+  transform: translate3D(0,-1px,0) scale(1.02);
+}
 
-  span {
-    color: #fff;
+@media screen and (max-width: 419px) {
+  .toolItem {
+    width: 250px;
   }
-  
-  /* ----- LINKS ----- */
-  
-  a:link,
-  a:visited {
-    text-decoration: none;
+}
+
+@media screen and (max-width: 1229px) {
+  .row,
+  .column {
+    justify-content: center;
   }
-  
+}
 
 
-  /* ----- BUTTONS ----- */
- .btn-blue,
- .btn-green {
-    position: relative;
-    display: block;
-    margin: 30px auto;
-    padding: 1em 3em;
-    max-width: 250px;
-    color: #fff;
-    text-align: center;
-    overflow: hidden;
-    border-width: 0;
-    outline: none;
-    border-radius: 6px;
-    -webkit-transition: background-color .3s;
-    -o-transition: background-color .3s;
-    transition: background-color .3s;
-    cursor: pointer;
-  }
 
-  .btn-blue {
-    background-color: #3A4C5A;
-  }
-
-  .btn-blue:hover, .btn-blue:focus {
-    background-color: #262E33;
-    color: #fff;
-  }
-
-  .btn-green {
-    background-color: #1E836C;
-  }
-
-  .btn-green:hover, .btn-green:focus {
-    background-color: #0E341B;
-    color: #fff;
-  }
-   
-  
-  /* ----------------------------------------------- */
-  /* Queries */
-  /* ----------------------------------------------- */
-  @media only screen and (max-width: 1250px) {
-    .box,
-    .box-column {
-        padding-left: 5%;
-        padding-right: 5%;
-    }
-  }
-  
-  @media only screen and (max-width: 1037px) {
-    .box div,
-    .box-column div {
-        margin-top: 10px;
-    }
-  }
-
-  @media only screen and (max-width: 871px) {
-    hr {
-      margin: 35px auto;
-    }
-  }
-  
-  @media only screen and (max-width: 575px) {
-    .box div {
-      margin-top: 0px;
-    }
-  
-    * {
-      font-size: 16px;
-    }
-  }
-  

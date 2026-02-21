@@ -1,0 +1,11 @@
+.toolName {
+    padding: 15px 5px;
+    text-align: center;
+}
+
+
+.toolIcon {
+    max-width: 88px;
+    height: 50px;
+    margin-top: 20px
+}
