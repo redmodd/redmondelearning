@@ -9,8 +9,17 @@ const PortfolioItem = props => {
                 <span className = "clientName">{props.client}</span>
                 <h3 className = "moduleTitle">{props.header}</h3>
                 <p className = "moduleText">{props.moduleText}</p>
-                <div className = "portfolioToolContainer">
-                    {props.tools}
+                <div className="portfolioToolContainer">
+                    {props.tools?.map(src => (
+                        <img
+                        key={src}
+                        src={src}
+                        alt=""
+                        className="portfolioTool"
+                        loading="lazy"
+                        decoding="async"
+                        />
+                    ))}
                 </div>
             </a> 
         </article>
