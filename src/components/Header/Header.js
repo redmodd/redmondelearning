@@ -1,21 +1,19 @@
 import React from 'react';
 import './Header.css';
+import avatarImage from './images/avatar.svg'
 
 const Header = () => {
-    const avatarImage = require('./images/avatar.svg');
     return(
-        <section className="hero-section" id="header">
-            <div className="box avatar">
-                <div className="avatar-container">
-                    <img src={avatarImage} alt="Avatar"></img>
-                </div>
-                <div>
-                    <h1 className="hero-heading">Hi, I'm Derek!</h1>
-                    <p className="hero-paragraph" id="about">I design learning experiences and environments.</p>
-                </div>
+        <header className ="column headerSection" id="header">
+            <div>
+                <img className ="avatarImage" src={avatarImage} alt="Avatar" decoding="async"></img>
+            </div>
+            <div>
+                <h1 className = "headerTitle textCenter">Hi, I'm Derek!</h1>
+                <p className = "headerParagraph textCenter">Let's create learning experiences and environments your learners will love.</p>
             </div>
             
-        </section>
+        </header>
         
     );
 }

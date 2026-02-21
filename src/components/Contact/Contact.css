@@ -1,0 +1,11 @@
+.contactCard {
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1320px) {
+    .contactCard {
+      width: 95%;
+    }
+  }

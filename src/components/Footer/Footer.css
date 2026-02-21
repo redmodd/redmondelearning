@@ -1,31 +1,17 @@
 footer {
-   background-color: #E0EAE7;
+   background-color: #1e836c;
    margin-top: 50px;
    padding: 25px 0;
-}
-
-.name {
-    color: #4AB19A;
-    font-size: 1.10em;
+   border-radius: 10px 10px 0 0;
 }
 
 .social-container {
     margin-bottom: 10px;
 }
 
-.social {
-    color: #4AB19A;
-}
-
-.name:hover,
-.name:active,
-.social:hover,
-.social:active {
-    color: #0E341B;
-}
-
-.footer {
-    color: #4AB19A;
+.social,
+.madeWith {
+    color: #fff;
 }
 
 .madeWith {
@@ -33,5 +19,11 @@ footer {
 }
 
 .heart {
-    color: #FD626A;
+    color: #FE4B35;
 }
+
+@media screen and (max-width: 1300px) {
+    footer {
+      border-radius: 0px;
+    }
+  }

@@ -1,20 +1,21 @@
 import React from 'react';
+import './Contact.css';
 
 const Contact = () => {
     return(
         <section id="contact">
-            <div className="box-column">
+            <div className="column contactCard">
                 <div>
-                    <h1>Contact Me</h1>
+                    <h2 className ="textCenter">Contact Me</h2>
                 </div>
                 <div>
-                    <h2>Think I can help?</h2>
+                    <h3 className ="textCenter">Think I can help?</h3>
                 </div>
                 <div>
-                    <p>If you have a project you think I can help you with, I'm happy to chat. I am available for freelance or contract work.</p>
+                    <p className ="textCenter">If you have a project you think I can help you with, I'm happy to chat. I am available for freelance or contract work.</p>
                 </div>
                 <div>
-                    <a className="btn-green" href="mailto:dredmond@redmondelearning.ca" type="button">Contact Me</a>
+                    <a className="btn-green" href="mailto:derek.redmond@redmondelearning.ca" type="button">Contact Me</a>
                 </div>
             </div>
         </section>

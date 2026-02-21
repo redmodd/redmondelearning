@@ -1,155 +1,129 @@
 import React from 'react';
-import './Portfolio.css';
 import PortfolioItem from './PortfolioItem';
 
-const Portfolio = () => {    
+const Portfolio = () => {   
+    const StorylineLogo = <img className = "portfolioTool" alt="Storyline Logo" src={require('./images/Storyline.webp')} loading="lazy"></img>
+    const AudacityLogo = <img className = "portfolioTool" alt="Audacity Logo" src={require('./images/Audacity.webp')} loading="lazy"></img>
+    const FlowLogo = <img className = "portfolioTool" alt="dominKnow Flow Logo" src={require('./images/Flow.webp')} loading="lazy"></img>
+    const VYONDLogo = <img className = "portfolioTool" alt="VYOND Logo" src={require('./images/VYOND.webp')} loading="lazy"></img>
+    const RiseLogo = <img className = "portfolioTool" alt="Articulate Rise Logo" src={require('./images/Rise.webp')} loading="lazy"></img>
+    const WordPressLogo = <img className = "portfolioTool" alt="WordPress Logo" src={require('./images/WordPress.webp')} loading="lazy"></img>
+    const BuddyBossLogo = <img className = "portfolioTool" alt="BuddyBoss Logo" src={require('./images/BuddyBoss.webp')} loading="lazy"></img>
+    const LearnDashLogo = <img className = "portfolioTool" alt="LearnDash Logo" src={require('./images/LearnDash.webp')} loading="lazy"></img>
+    const CamtasiaLogo = <img className = "portfolioTool" alt="Camtasia Logo" src={require('./images/Camtasia.webp')} loading="lazy"></img> 
+    
     const portfolioItems = [
        {
-            className: "card privacy",
-            portfolioType: "images-landscape-container",
-            imageType: "image-landscape",
-            imgSrc: require('./images/privacy.webp'),
+            imgSrc: require('./images/Privacy.webp'),
             alt: "Privacy and Information Security Module Screenshot",
+            client: "Ontario Shores Centre for Mental Health",
             header: "Privacy and Information Security",
-            subtitle: "Storyline 360",
-            text: "This eLearning module spices it up with some gamification. Inspired by Jeopardy, learners face off against two characters, wager points, and earn achievements.",
+            moduleText:"This eLearning module spices it up with some gamification. Inspired by Jeopardy, learners face off against two characters, wager points, and earn achievements.",
             itemUrl: "https://www.redmondelearning.ca/portfolio/Privacy/story.html",
-            buttonText: "Live Demo",
+            tools: <>{StorylineLogo}{AudacityLogo}</>,
             id: "privacy"
         },
+        {
+            imgSrc: require('./images/bystander.webp'),
+            alt: "Bystander Empowerment Screenshot",
+            client: "Coaching Association of Canada",
+            header: "Bystander Empowerment",
+            moduleText:"This eLearning module has a modern design. Learners are challenged make decisions in realistic settings.",
+            itemUrl: "https://www.redmondelearning.ca/portfolio/Bystander Empowerment Demo/index.html",
+            tools: <>{FlowLogo}{VYONDLogo}{AudacityLogo}{CamtasiaLogo}</>,
+            id: "bystander"
+        },
        {
-            className: "card map",
-            portfolioType: "images-landscape-container",
-            imageType: "image-landscape",
             imgSrc: require('./images/map.webp'),
             alt: "Memory and Aging Program Screenshot",
-            header: "Memory and Aging Program Review",
-            subtitle: "Storyline 360",
-            text: "Designed for the 50+ age group, this eLearning module reviews the 10 week long course. The module combines gamification and soothing music and colours to add a bit of fun.",
+            client: "Baycrest Health Sciences",
+            header: "Memory and Aging Program",
+            moduleText:"Designed for the 50+ age group, this eLearning module reviews the 10 week long course. The module combines gamification and soothing music and colours to add a bit of fun.",
             itemUrl: "https://www.redmondelearning.ca/portfolio/MAP/story.html",
-            buttonText: "Live Demo",
+            tools: <>{StorylineLogo}{AudacityLogo}</>,
             id: "map"
         },
-       {
-            className: "card jl",
-            portfolioType: "images-portrait-container",
-            imageType: "image-portrait",
-            imgSrc: require('./images/jl.webp'),
-            alt: "Cultural Competency: Judaism Module Screenshot",
-            header: "Cultural Competency: Judaism",
-            subtitle: "Rise 360",
-            text: "This eLearning module combines a modern design and realistic activities. The content has been removed and replaced with demo text.",
-            itemUrl: "https://www.redmondelearning.ca/portfolio/JL/index.html",
-            buttonText: "Live Demo",
-            id: "jl"
+        {
+            imgSrc: require('./images/engaging.webp'),
+            alt: "Engaging Families in Distress Screenshot",
+            client: "CLRI",
+            header: "Engaging Families in Distress",
+            moduleText:"This eLearning module helps prepare healthcare workers for engagine with family members who are in distress. This module contains several practice activities to apply the content.",
+            itemUrl: "https://www.redmondelearning.ca/portfolio/Engaging Families in Distress/index.html",
+            tools: <>{RiseLogo}{VYONDLogo}{StorylineLogo}{AudacityLogo}{CamtasiaLogo}</>,
+            id: "engaging"
         },
         {
-            className: "card dataExcellence",
-            portfolioType: "images-portrait-container",
-            imageType: "image-portrait",
-            imgSrc: require('./images/dataexcellence.webp'),
-            alt: "Data Excellence Module Screenshot",
-            header: "Data Excellence",
-            subtitle: "dominKnow Flow",
-            text: "This demo eLearning module shows a modern design with pleasing graphics. Only Chapter 2 contains content in this demo.",
-            itemUrl: "https://www.redmondelearning.ca/portfolio/DE/index.html",
-            buttonText: "Live Demo",
-            id: "de"
+            imgSrc: require('./images/SportParticipation.webp'),
+            alt: "Leading a Return to Sport Participation Screenshot",
+            client: "Coaching Association of Canada",
+            header: "Leading a Return to Sport Participation",
+            moduleText:"This eLearning module prepares youth sport coaches to lead their teams in a COVID-19 environment. This module is activity heavy - having learners apply resources in realistic settings.",
+            itemUrl: "https://www.redmondelearning.ca/portfolio/Leading a Return to sport Participation/index.html",
+            tools: <>{FlowLogo}{VYONDLogo}{AudacityLogo}{CamtasiaLogo}</>,
+            id: "SportParticipation"
         },
         {
-            className: "card wpv",
-            portfolioType: "images-landscape-container",
-            imageType: "image-landscape",
-            imgSrc: require('./images/wpv.webp'),
-            alt: "Workplace Violence, Harassment, and Domestic Violence Module Screenshot",
-            header: "Workplace Violence, Harassment, and Domestic Violence",
-            subtitle: "Storyline 360 & VYOND",
-            text: "This eLearning module has a fun design combined with realistic activities and animated scenarios. Learners are challenged make critical decisions in a realistic but safe setting.",
-            itemUrl: "https://www.redmondelearning.ca/portfolio/WPV/story.html",
-            buttonText: "Live Demo",
-            id: "wpv"
-        },
-        {
-            className: "card ip",
-            portfolioType: "images-landscape-container",
-            imageType: "image-landscape",
-            imgSrc: require('./images/ip.webp'),
+            imgSrc: require('./images/IP.webp'),
             alt: "Introduction to Intellectual Property Rights Screenshot",
-            header: "Introduction to Intellectual Property Rights",
-            subtitle: "Storyline 360",
-            text: "This eLearning module has a modern design with complex user tracking through the dashboard and gamified knowledge checks.",
+            client: "Baycrest Health Sciences",
+            header: "Introduction to IP Rights",
+            moduleText:"This eLearning module has a modern design with complex user tracking through the dashboard and gamified knowledge checks.",
             itemUrl: "https://www.redmondelearning.ca/portfolio/IP/story.html",
-            buttonText: "Live Demo",
+            tools: <>{StorylineLogo}</>,
             id: "ip"
         },
         {
-            className: "card website",
-            portfolioType: "images-landscape-container",
-            imageType: "image-landscape",
-            imgSrc: require('./images/website.webp'),
-            alt: "Redmond eLearning website screenshot",
-            header: "Redmond eLearning Website",
-            subtitle: "React.js",
-            text: "The website you are currently on! A clean, modern and mobile website made with React.js.",
-            itemUrl: "https://www.redmondelearning.ca/",
-            buttonText: "Live Demo",
+            imgSrc: require('./images/856.webp'),
+            alt: "856 Air Cadets screenshot",
+            client: "856 Air Cadets",
+            header: "856 Air Cadets Website",
+            moduleText:"A website for a youth organization that includes an online community and an LMS.",
+            itemUrl: "https://856aircadets.com/",
+            tools: <>{WordPressLogo}{BuddyBossLogo}{LearnDashLogo}</>,
             id: "website"
         },
         {
-            className: "card paper",
-            portfolioType: "images-landscape-container",
-            imageType: "image-landscape",
             imgSrc: require('./images/paper.webp'),
-            alt: "Paper screenshot",
+            alt: "Academic Paper screenshot",
+            client: "Academic Paper",
             header: "A Framework to Leverage & Mature Learning Ecosystems",
-            subtitle: "Academic paper",
-            text: "Check out my recent publication published in the International Journal of Emerging Technologies in Learning.",
+            moduleText:"Check out my recent publication published in the International Journal of Emerging Technologies in Learning.",
             itemUrl: "https://online-journals.org/index.php/i-jet/article/view/11898",
-            buttonText: "Read Paper",
             id: "paper"
         },
         {
-            className: "card pumpkin",
-            portfolioType: "images-landscape-container",
-            imageType: "image-landscape",
             imgSrc: require('./images/pumpkin.webp'),
-            alt: "Pumpkin Game demo screenshot ",
+            alt: "Pumpkin Game demo screenshot",
+            client: "Proof of Concept",
             header: "Pumpkin Game",
-            subtitle: "Storyline 360",
-            text: "This proof of concept is a fun game for kids to learn about gardening through growing a pumpkin. This is a proof of concept and is not fully functional.",
+            moduleText:"This proof of concept is a fun game for kids to learn about gardening through growing a pumpkin. This is a proof of concept and is not fully functional.",
             itemUrl: "https://www.redmondelearning.ca/portfolio/PumpkinGame/story.html",
-            buttonText: "Live Demo",
+            tools: <>{StorylineLogo}{AudacityLogo}</>,
             id: "pumpkin"
         }
     ]
     return(
-        <section>
-            <div className="box-column">
-                <div>
-                    <h1>Portfolio</h1>
-                </div>
-                <div className="portfolio-description">
-                    <p>Here's a selection of my recent work.</p>
-                </div>
+        <section id="portfolio">
+            <div className="column">
+                <h2 className ="textCenter">Portfolio</h2>
+                <p className ="textCenter">Here's a selection of my recent work.</p>
             </div>          
-            <div className="box-card">
+            <div className="row">
                 {portfolioItems.map (item => {
                     return <PortfolioItem 
-                        className={item.className}
-                        portfolioType={item.portfolioType} 
-                        imageType={item.imageType} 
                         imgSrc={item.imgSrc} 
                         alt={item.alt} 
+                        client={item.client}
                         header={item.header} 
-                        subtitle={item.subtitle} 
-                        text={item.text} 
+                        moduleText={item.moduleText} 
                         itemUrl={item.itemUrl} 
-                        buttonText={item.buttonText}
+                        tools={item.tools}
                         key={item.id}
                         />
                 })}
             </div>
-            <hr></hr>
+            <div className="spacer"></div>
         </section>
     );
 }
