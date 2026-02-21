@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This is the codebase for [redmondelearning.ca](redmondelearning.ca).
+This is the codebase for [redmondelearning.ca](https://redmondelearning.ca).
 
 ## Available Scripts
 
