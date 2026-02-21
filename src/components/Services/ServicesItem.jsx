@@ -1,4 +1,3 @@
-import React from 'react';
 import './ServicesItem.css';
 
 const ServicesItem = (props) => {    

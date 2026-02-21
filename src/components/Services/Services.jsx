@@ -1,4 +1,3 @@
-import React from 'react';
 import ServicesItems from './ServicesItem.jsx';
 import ToolItems from './ToolItem.jsx';
 import ID from './images/ID.webp';

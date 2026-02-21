@@ -1,7 +1,6 @@
-import React from 'react';
 import './Toolbar.css';
 
-const Toolbar = props => {
+const Toolbar = () => {
     return(
         <nav className="toolbar">
             <ul>

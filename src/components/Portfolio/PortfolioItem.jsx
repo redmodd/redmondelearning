@@ -1,4 +1,4 @@
-import React from 'react';
+;
 import './PortfolioItem.css';
 
 const PortfolioItem = props => {

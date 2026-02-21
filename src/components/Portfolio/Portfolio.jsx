@@ -1,4 +1,3 @@
-import React from 'react';
 import PortfolioItem from './PortfolioItem.jsx';
 
 import Privacy from './images/Privacy.webp';

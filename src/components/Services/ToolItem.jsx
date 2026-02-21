@@ -1,4 +1,3 @@
-import React from 'react';
 import './ToolItem.css';
 
 const ToolItem = (props) => {    
