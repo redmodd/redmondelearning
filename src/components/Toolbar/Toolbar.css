@@ -1,31 +1,57 @@
 .toolbar {
-    height: 75px;
-    background-color: #fff;
-    border-bottom: 1px solid #e5e5e5;
-    border-radius: 0 0 10px 10px;    
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: 75px;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  border-radius: 0 0 var(--radius-card) var(--radius-card);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.25s ease, border-color 0.2s ease;
+}
+
+.toolbar--scrolled {
+  box-shadow: 0 4px 20px rgba(39, 44, 49, 0.08);
+  border-bottom-color: transparent;
 }
 
 .toolbar ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 0;
 }
 
 .toolbar li {
-    padding: 0 1rem;
+  padding: 0 1rem;
 }
 
-.toolbar a:hover,
-a:active {
-    color: #1e836c;
+.toolbar a {
+  color: var(--color-text);
+  font-weight: 400;
+  padding: 0.35em 0.2em;
+  border-radius: 4px;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-@media screen and (max-width: 1300px) {
-    .toolbar {
-      border-radius: 0px;
-    }
-  }
+.toolbar a:hover {
+  color: #1e836c;
+}
+
+.toolbar a:active {
+  color: #0e341b;
+}
+
+.toolbar a:focus {
+  outline: none;
+}
+
+.toolbar a:focus-visible {
+  color: #1e836c;
+  box-shadow: var(--focus-ring);
+}

@@ -8,16 +8,23 @@ import Contact from '../Contact/Contact.jsx';
 import Footer from '../Footer/Footer.jsx';
 
 const App = () => {
-    return (
-      <main className="App">
+  return (
+    <div className="App">
+      <a className="skip-link" href="#main">
+        Skip to main content
+      </a>
+      <div className="pageContent pageContent--wide">
         <Header />
         <Toolbar />
+      </div>
+      <main id="main">
         <Services />
         <Portfolio />
         <Contact />
-        <Footer />
       </main>
-    );
-}
+      <Footer />
+    </div>
+  );
+};
 
 export default App;

@@ -1,24 +1,33 @@
 import './Contact.css';
 
 const Contact = () => {
-    return(
-        <section id="contact">
-            <div className="column contactCard">
-                <div>
-                    <h2 className ="textCenter">Contact Me</h2>
-                </div>
-                <div>
-                    <h3 className ="textCenter">Think I can help?</h3>
-                </div>
-                <div>
-                    <p className ="textCenter">If you have a project you think I can help you with, I'm happy to chat. I am available for freelance or contract work.</p>
-                </div>
-                <div>
-                    <a className="btn-green" href="mailto:derek.redmond@redmondelearning.ca" type="button">Contact Me</a>
-                </div>
-            </div>
-        </section>
-    )
-}
+  return (
+    <section id="contact">
+      <div className="pageContent">
+        <div className="column contactSection">
+          <h2 className="contactSection__title">Contact Me</h2>
+          <h3 className="contactSection__subtitle">Think I can help?</h3>
+          <p className="contactSection__copy">
+            If you have a project you think I can help you with, I'm happy to chat. I am
+            available for freelance or contract work.
+          </p>
+          <div className="btn-row">
+            <a className="btn-green" href="mailto:derek.redmond@redmondelearning.ca">
+              Contact Me
+            </a>
+            <a
+              className="btn-outline"
+              href="https://www.linkedin.com/in/derek-redmond/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default Contact;

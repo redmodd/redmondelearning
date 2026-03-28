@@ -1,46 +1,82 @@
-/* ----- Cards ----- */
-article {
-    display: flex;
-    align-content: stretch;
-    justify-content: center;
-    flex-direction: row; 
+.portfolioArticle {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+}
+
+.portfolioItem {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  color: inherit;
+}
+
+.portfolioImageWrap {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  overflow: hidden;
+  background-color: #eef1f2;
 }
 
 .portfolioImage {
-    width: 400px;
-    height: 225px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
 }
 
 .moduleTitle,
 .clientName,
 .moduleText {
-    padding: 0 20px;
+  padding: 0 var(--space-3);
 }
 
 .moduleTitle {
-    text-align: left;
-    min-height: 65px;
+  text-align: left;
+  min-height: 3.2em;
+  margin-top: var(--space-2);
 }
 
 .clientName {
-    margin: 20px 0 -10px 0;
-    color: #738a94;
-    font-size: 0.75em;
-    text-transform: uppercase ;
+  margin: var(--space-3) 0 calc(-1 * var(--space-1)) 0;
+  color: #738a94;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .moduleText {
-    min-height: 135px
+  min-height: 7.5em;
+  flex-grow: 1;
 }
 
 .portfolioToolContainer {
-    display: flex;
-    justify-content: center;
-    padding: 10px 0 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: var(--space-1);
+  padding: var(--space-2) 0 var(--space-3);
+  /* Match vertical space of a one-row tool strip when empty (e.g. academic paper) */
+  min-height: calc(35px + var(--space-2) + var(--space-3));
+  margin-top: auto;
 }
 
 .portfolioTool {
-    max-width: 62px;
-    height: 35px;
-    padding: 0px 10px;
+  max-width: 62px;
+  height: 35px;
+  object-fit: contain;
+}
+
+.portfolioItem:focus {
+  outline: none;
+}
+
+.portfolioItem:focus-visible {
+  box-shadow: var(--focus-ring), var(--shadow-card);
 }
