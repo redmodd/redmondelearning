@@ -1,11 +1,23 @@
-.contactCard {
-    background-color: #fff;
-    border-radius: 10px;
-    margin: 0 auto;
+.contactSection {
+  width: 100%;
+  text-align: center;
+  background-color: #fff;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-5) var(--space-3);
+  margin-bottom: var(--space-4);
 }
 
-@media screen and (max-width: 1320px) {
-    .contactCard {
-      width: 95%;
-    }
-  }
+.contactSection__title {
+  margin-bottom: var(--space-2);
+}
+
+.contactSection__subtitle {
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.contactSection__copy {
+  color: var(--color-text);
+  line-height: 1.55;
+}

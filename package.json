@@ -14,8 +14,7 @@
   },
   "dependencies": {
     "react": "19.2.1",
-    "react-dom": "19.2.1",
-    "web-vitals": "^5.1.0"
+    "react-dom": "19.2.1"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.0",
