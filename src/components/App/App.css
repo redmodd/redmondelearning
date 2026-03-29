@@ -233,37 +233,18 @@ a:visited {
 /* CARDS & GRIDS */
 /* ----------------------------------------------- */
 
-.servicesItem,
-.toolItem,
 .portfolioItem {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background-color: #fff;
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
-}
-
-.servicesItem {
-  align-items: center;
-  width: 100%;
-  max-width: 280px;
-  justify-self: center;
-}
-
-.toolItem {
-  align-items: center;
-  width: 100%;
-  max-width: 220px;
-  justify-self: center;
-}
-
-.portfolioItem {
   max-width: 400px;
   margin: var(--space-1) 0;
   transition: box-shadow 0.35s ease, transform 0.35s ease;
   color: inherit;
   overflow: hidden;
+  background-color: #fff;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
 }
 
 .portfolioItem:hover {
