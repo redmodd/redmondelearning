@@ -59,8 +59,6 @@ body {
   min-height: 100vh;
 }
 
-
-
 .skip-link {
   position: absolute;
   top: -100px;
@@ -73,10 +71,6 @@ body {
   border-radius: 6px;
   box-shadow: var(--shadow-card);
   transition: top 0.2s ease;
-}
-
-.skip-link:focus {
-  outline: none;
 }
 
 .skip-link:focus-visible {
@@ -121,11 +115,8 @@ body {
 h1,
 h2,
 h3 {
-  font-family: var(--font-body);
   font-weight: 400;
   margin: 0 0 var(--space-2);
-  text-align: inherit;
-  color: var(--color-text);
   line-height: 1.2;
 }
 
@@ -140,6 +131,10 @@ h2 {
 
 h3 {
   font-size: clamp(1.05rem, 2vw, 1.15rem);
+}
+
+:focus {
+  outline: none;
 }
 
 /* ----------------------------------------------- */
@@ -162,32 +157,31 @@ a:visited {
   margin-top: var(--space-3);
 }
 
-.btn-green {
+.btn-green,
+.btn-outline {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   margin: 0;
-  padding: 0.9em 2.25em;
   min-height: 48px;
   max-width: 280px;
-  color: #fff;
   text-align: center;
-  border: none;
   border-radius: 6px;
   cursor: pointer;
-  background-color: var(--color-teal);
   font: inherit;
   font-weight: 500;
   transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.2s ease;
 }
 
-.btn-green:hover {
-  background-color: var(--color-teal-dark);
+.btn-green {
+  padding: 0.9em 2.25em;
   color: #fff;
+  border: none;
+  background-color: var(--color-teal);
 }
 
-.btn-green:focus {
-  outline: none;
+.btn-green:hover {
+  background-color: var(--color-teal-dark);
 }
 
 .btn-green:focus-visible {
@@ -196,32 +190,16 @@ a:visited {
 }
 
 .btn-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
   padding: 0.85em 2em;
-  min-height: 48px;
-  max-width: 280px;
   color: var(--color-teal);
-  text-align: center;
   border: 2px solid var(--color-teal);
-  border-radius: 6px;
-  cursor: pointer;
   background-color: transparent;
-  font: inherit;
-  font-weight: 500;
-  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn-outline:hover {
   background-color: rgba(30, 131, 108, 0.08);
   color: var(--color-teal-dark);
   border-color: var(--color-teal-dark);
-}
-
-.btn-outline:focus {
-  outline: none;
 }
 
 .btn-outline:focus-visible {
@@ -231,8 +209,6 @@ a:visited {
 /* ----------------------------------------------- */
 /* CARDS & GRIDS */
 /* ----------------------------------------------- */
-
-
 
 #services {
   padding-top: var(--space-4);
@@ -278,18 +254,9 @@ a:visited {
   align-items: stretch;
 }
 
-.column {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-
-
 /* --- Header --- */
 .headerSection {
-  background-color: #1e836c;
+  background-color: var(--color-teal);
   width: 100%;
   min-height: clamp(175px, 20vh, 260px);
   display: flex;
@@ -299,6 +266,10 @@ a:visited {
 }
 
 .headerInner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   gap: var(--space-2);
   text-align: center;
@@ -378,19 +349,15 @@ a:visited {
 }
 
 .toolbar a:hover {
-  color: #1e836c;
+  color: var(--color-teal);
 }
 
 .toolbar a:active {
-  color: #0e341b;
-}
-
-.toolbar a:focus {
-  outline: none;
+  color: var(--color-teal-dark);
 }
 
 .toolbar a:focus-visible {
-  color: #1e836c;
+  color: var(--color-teal);
   box-shadow: var(--focus-ring);
 }
 
@@ -515,7 +482,6 @@ a:visited {
   align-content: center;
   gap: var(--space-1);
   padding: var(--space-2) 0 var(--space-3);
-  /* Match vertical space of a one-row tool strip when empty (e.g. academic paper) */
   min-height: calc(35px + var(--space-2) + var(--space-3));
   margin-top: auto;
 }
@@ -524,10 +490,6 @@ a:visited {
   max-width: 62px;
   height: 35px;
   object-fit: contain;
-}
-
-.portfolioItem:focus {
-  outline: none;
 }
 
 .portfolioItem:focus-visible {
@@ -548,26 +510,13 @@ a:visited {
   padding: var(--space-5) var(--space-3);
   margin-bottom: var(--space-4);
 }
-
-.contactSection__title {
-  margin-bottom: var(--space-2);
-}
-
-.contactSection__subtitle {
-  margin-bottom: var(--space-2);
-}
-
-.contactSection__copy {
-  line-height: 1.55;
-}
-
 /* --- Footer --- */
 .siteFooterWrap {
   margin-top: var(--space-5);
 }
 
 .siteFooter {
-  background-color: #1e836c;
+  background-color: var(--color-teal);
   padding: var(--space-4) var(--space-3);
   border-radius: var(--radius-card) var(--radius-card) 0 0;
   text-align: center;
