@@ -1,36 +1,16 @@
 {
   "name": "RedmondeLearning",
   "homepage": ".",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "lint": "eslint .",
     "dev": "vite",
     "start": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "test": "vitest"
-  },
-  "dependencies": {
-    "prop-types": "^15.8.1",
-    "react": "19.2.1",
-    "react-dom": "19.2.1"
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.3.2",
-    "@testing-library/user-event": "^14.5.2",
-    "@vitejs/plugin-react": "^5.2.0",
-    "@eslint/js": "^9.39.3",
-    "eslint": "^9.39.3",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.5.0",
-    "globals": "^17.3.0",
-    "jsdom": "^27.0.1",
-    "vite": "7.3.2",
-    "vitest": "^4.0.18"
+    "vite": "7.3.2"
   }
 }

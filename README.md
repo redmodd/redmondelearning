@@ -1,30 +1,18 @@
-# Getting Started with Create React App
+# Redmond eLearning
 
-This is the codebase for [redmondelearning.ca](https://redmondelearning.ca).
+Portfolio website for [redmondelearning.ca](https://redmondelearning.ca). A single-page static site built with plain HTML and CSS, using [Vite](https://vite.dev/) for development and builds.
 
-## Available Scripts
+## Development
 
-In the project directory, you can run:
+```bash
+npm install
+npm run dev
+```
 
-### `npm start`
+## Build & Deploy
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+npm run build
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Upload the contents of `dist/` to your webserver.
