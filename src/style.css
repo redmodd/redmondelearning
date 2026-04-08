@@ -57,11 +57,10 @@ body {
   text-rendering: optimizeLegibility;
   line-height: 1.55;
   background-color: var(--color-page-bg);
-}
-
-.App {
   min-height: 100vh;
 }
+
+
 
 .skip-link {
   position: absolute;
@@ -144,12 +143,8 @@ h3 {
   font-size: clamp(1.05rem, 2vw, 1.15rem);
 }
 
-.textCenter {
-  text-align: center;
-}
-
 /* ----------------------------------------------- */
-/* LINKS (base; nav scoped in Toolbar.css) */
+/* LINKS */
 /* ----------------------------------------------- */
 a:link,
 a:visited {
@@ -238,24 +233,7 @@ a:visited {
 /* CARDS & GRIDS */
 /* ----------------------------------------------- */
 
-.portfolioItem {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  max-width: 400px;
-  margin: var(--space-1) 0;
-  transition: box-shadow 0.35s ease, transform 0.35s ease;
-  color: inherit;
-  overflow: hidden;
-  background-color: #fff;
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
-}
 
-.portfolioItem:hover {
-  box-shadow: var(--shadow-card-hover);
-  transform: translate3d(0, -2px, 0) scale(1.01);
-}
 
 .row--services {
   display: grid;
@@ -321,6 +299,7 @@ a:visited {
 .headerInner {
   width: 100%;
   gap: var(--space-2);
+  text-align: center;
 }
 
 .headerAvatarWrap {
@@ -376,7 +355,6 @@ a:visited {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: box-shadow 0.25s ease, border-color 0.2s ease;
 }
 
 .toolbar ul {
@@ -442,7 +420,6 @@ a:visited {
 
 .icon-card__image {
   margin-top: var(--space-3);
-  decoding: async;
 }
 
 .icon-card__image--services {
@@ -483,7 +460,19 @@ a:visited {
   flex-direction: column;
   flex: 1;
   min-height: 0;
+  max-width: 400px;
+  margin: var(--space-1) 0;
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
   color: inherit;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.portfolioItem:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translate3d(0, -2px, 0) scale(1.01);
 }
 
 .portfolioImageWrap {
@@ -569,12 +558,10 @@ a:visited {
 }
 
 .contactSection__subtitle {
-  color: var(--color-text);
   margin-bottom: var(--space-2);
 }
 
 .contactSection__copy {
-  color: var(--color-text);
   line-height: 1.55;
 }
 
