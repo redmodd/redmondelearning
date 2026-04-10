@@ -22,7 +22,10 @@
     <nav class="site-nav" aria-label="Main navigation">
       <div class="site-nav__inner">
         <a class="site-nav__brand" href="/">Redmond<span> eLearning</span></a>
-        <ul class="site-nav__links" role="list">
+        <button class="site-nav__toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="site-nav__links" id="nav-links" role="list">
           <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
@@ -401,6 +404,20 @@
         window.addEventListener('scroll', () => {
           nav.classList.toggle('is-scrolled', window.scrollY > 20);
         }, { passive: true });
+
+        const toggle = nav.querySelector('.site-nav__toggle');
+        if (toggle) {
+          toggle.addEventListener('click', () => {
+            const open = nav.classList.toggle('is-open');
+            toggle.setAttribute('aria-expanded', open);
+          });
+          nav.querySelectorAll('.site-nav__links a').forEach(link => {
+            link.addEventListener('click', () => {
+              nav.classList.remove('is-open');
+              toggle.setAttribute('aria-expanded', 'false');
+            });
+          });
+        }
       }
     </script>
 
