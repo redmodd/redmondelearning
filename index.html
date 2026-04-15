@@ -394,67 +394,79 @@
         });
       });
 
-      function resetAnimation(track) {
-        track.style.animation = 'none';
-        void track.offsetWidth;
-        track.style.animation = '';
-      }
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      function initTrack(track, originals) {
+      function fillTrack(track, originals) {
         const gap = parseFloat(getComputedStyle(track).gap) || 0;
-
-        // Remove any previously cloned items, keeping only the originals
-        while (track.children.length > originals.length) {
-          track.removeChild(track.lastChild);
-        }
-
-        // Clone until the track fills at least 2× the viewport
+        while (track.children.length > originals.length) track.removeChild(track.lastChild);
         while (track.scrollWidth < window.innerWidth * 2) {
           originals.forEach(item => track.appendChild(item.cloneNode(true)));
         }
+        return originals.reduce((w, el) => w + el.offsetWidth + gap, 0);
+      }
 
-        // Set the exact pixel offset for one original set (including trailing gap)
-        const setWidth = originals.reduce((w, el) => w + el.offsetWidth + gap, 0);
-        track.style.setProperty('--marquee-offset', `${setWidth}px`);
-        resetAnimation(track);
+      // Single source of truth for play/pause. Every event updates its flag then calls this.
+      // We toggle playbackRate instead of calling pause()/play(): on pause/play across a
+      // hidden-tab boundary, Chrome can jump the animation when reconciling compositor and
+      // main-thread timelines. Keeping the animation "running" at rate 0 sidesteps that.
+      function syncAnim(data) {
+        const paused = prefersReducedMotion || data.hovered || data.offScreen || document.hidden;
+        data.anim.playbackRate = paused ? 0 : 1;
       }
 
       const marqueeData = [];
-      document.querySelectorAll('.marquee-track').forEach(track => {
+      document.querySelectorAll('.marquee-outer').forEach(outer => {
+        const track = outer.querySelector('.marquee-track');
         const originals = [...track.children];
-        initTrack(track, originals);
-        marqueeData.push({ track, originals });
+        const setWidth = fillTrack(track, originals);
+        const isFwd = track.classList.contains('marquee-track--fwd');
+
+        const anim = track.animate(
+          isFwd
+            ? [{ transform: 'translateX(0)' }, { transform: `translateX(-${setWidth}px)` }]
+            : [{ transform: `translateX(-${setWidth}px)` }, { transform: 'translateX(0)' }],
+          { duration: 38000, iterations: Infinity, easing: 'linear' }
+        );
+
+        const data = { outer, track, originals, anim, hovered: false, offScreen: false };
+        marqueeData.push(data);
+
+        outer.addEventListener('mouseenter', () => { data.hovered = true;  syncAnim(data); });
+        outer.addEventListener('mouseleave', () => { data.hovered = false; syncAnim(data); });
       });
 
-      // Re-init on resize in case the viewport grew wider than the cloned content
+      // Pause when scrolled out of view; resume in place when back
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            const data = marqueeData.find(d => d.outer === entry.target);
+            if (!data) return;
+            data.offScreen = !entry.isIntersecting;
+            syncAnim(data);
+          });
+        }, { threshold: 0 });
+        marqueeData.forEach(({ outer }) => observer.observe(outer));
+      }
+
+      // Tab/window visibility change — syncAnim reads document.hidden directly.
+      // On return, resync hovered from the real pointer state: mouseenter/leave
+      // don't fire across tab switches, so a stale flag can get stuck either way.
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+          marqueeData.forEach(data => { data.hovered = data.outer.matches(':hover'); });
+        }
+        marqueeData.forEach(data => syncAnim(data));
+      });
+
+      // On resize, adjust clone count — animation continues uninterrupted
       let resizeTimer;
       window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
-          marqueeData.forEach(({ track, originals }) => initTrack(track, originals));
+          marqueeData.forEach(({ track, originals }) => fillTrack(track, originals));
         }, 150);
       }, { passive: true });
 
-      // Pause when the section scrolls out of view; resume in place on re-entry
-      // Uses a CSS class so there are no inline styles to conflict with the hover rule
-      const marqueeOuters = document.querySelectorAll('.marquee-outer');
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            const track = entry.target.querySelector('.marquee-track');
-            track.classList.toggle('is-paused', !entry.isIntersecting);
-          });
-        }, { threshold: 0 });
-        marqueeOuters.forEach(outer => observer.observe(outer));
-      }
-
-      // When returning to the tab, browsers have advanced the animation clock while
-      // throttled — reset all visible tracks to a clean start.
-      document.addEventListener('visibilitychange', () => {
-        if (!document.hidden) {
-          marqueeData.forEach(({ track }) => resetAnimation(track));
-        }
-      });
 
       if (nav) {
         window.addEventListener('scroll', () => {
