@@ -830,14 +830,18 @@ a { text-decoration: none; color: inherit; }
 
 @keyframes marquee-fwd {
   from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  to   { transform: translateX(calc(-1 * var(--marquee-offset, 50%))); }
 }
 
 @keyframes marquee-rev {
-  from { transform: translateX(-50%); }
+  from { transform: translateX(calc(-1 * var(--marquee-offset, 50%))); }
   to   { transform: translateX(0); }
 }
 
+
+.marquee-outer:hover .marquee-track {
+  animation-play-state: paused;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .marquee-track--fwd,

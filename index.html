@@ -326,27 +326,12 @@
             <a class="marquee-item" href="https://www.adobe.com/creativecloud.html" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/CreativeCloud.webp" alt="" /><span>Adobe Creative Cloud</span></a>
             <a class="marquee-item" href="https://www.techsmith.com/camtasia/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/Camtasia.webp" alt="" /><span>Camtasia</span></a>
             <a class="marquee-item" href="https://www.audacityteam.org/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/Audacity.webp" alt="" /><span>Audacity</span></a>
-            <!-- duplicate for seamless loop -->
-            <a class="marquee-item" href="https://www.dominknow.com/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/dominknow.webp" alt="" /><span>dominKnow | ONE</span></a>
-            <a class="marquee-item" href="https://articulate.com/360" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/articulate360.webp" alt="" /><span>Articulate 360</span></a>
-            <a class="marquee-item" href="https://www.vyond.com/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/VYOND.webp" alt="" /><span>VYOND</span></a>
-            <a class="marquee-item" href="https://www.adobe.com/creativecloud.html" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/CreativeCloud.webp" alt="" /><span>Adobe Creative Cloud</span></a>
-            <a class="marquee-item" href="https://www.techsmith.com/camtasia/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/Camtasia.webp" alt="" /><span>Camtasia</span></a>
-            <a class="marquee-item" href="https://www.audacityteam.org/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/Audacity.webp" alt="" /><span>Audacity</span></a>
           </div>
         </div>
 
         <!-- Row 2: reverse scroll -->
         <div class="marquee-outer" aria-hidden="true">
           <div class="marquee-track marquee-track--rev">
-            <a class="marquee-item" href="https://developer.mozilla.org/en-US/docs/Learn/HTML" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/HTML_CSS.webp" alt="" /><span>HTML &amp; CSS</span></a>
-            <a class="marquee-item" href="https://xapi.com/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/xAPI.webp" alt="" /><span>xAPI</span></a>
-            <a class="marquee-item" href="https://scorm.com/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/SCORM.webp" alt="" /><span>SCORM</span></a>
-            <a class="marquee-item" href="https://wordpress.org/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/WordPress.webp" alt="" /><span>WordPress</span></a>
-            <a class="marquee-item" href="https://www.learndash.com/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/LearnDash.webp" alt="" /><span>LearnDash</span></a>
-            <a class="marquee-item" href="https://www.buddyboss.com/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/BuddyBoss.webp" alt="" /><span>BuddyBoss</span></a>
-            <div class="marquee-item"><img src="/src/images/LMSs.webp" alt="" /><span>Various LMSs &amp; LXPs</span></div>
-            <!-- duplicate for seamless loop -->
             <a class="marquee-item" href="https://developer.mozilla.org/en-US/docs/Learn/HTML" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/HTML_CSS.webp" alt="" /><span>HTML &amp; CSS</span></a>
             <a class="marquee-item" href="https://xapi.com/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/xAPI.webp" alt="" /><span>xAPI</span></a>
             <a class="marquee-item" href="https://scorm.com/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/SCORM.webp" alt="" /><span>SCORM</span></a>
@@ -409,10 +394,18 @@
         });
       });
 
-      document.querySelectorAll('.marquee-outer').forEach(outer => {
-        const track = outer.querySelector('.marquee-track');
-        outer.addEventListener('mouseenter', () => { track.style.animationPlayState = 'paused'; });
-        outer.addEventListener('mouseleave', () => { track.style.animationPlayState = 'running'; });
+      document.querySelectorAll('.marquee-track').forEach(track => {
+        const originals = [...track.children];
+        const gap = parseFloat(getComputedStyle(track).gap) || 0;
+
+        // Clone until track fills at least 2× the viewport (guarantees no blank space)
+        while (track.scrollWidth < window.innerWidth * 2) {
+          originals.forEach(item => track.appendChild(item.cloneNode(true)));
+        }
+
+        // Measure the exact original-set width including the trailing gap
+        const setWidth = originals.reduce((w, el) => w + el.offsetWidth + gap, 0);
+        track.style.setProperty('--marquee-offset', `${setWidth}px`);
       });
 
       if (nav) {
