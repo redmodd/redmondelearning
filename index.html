@@ -408,6 +408,18 @@
         track.style.setProperty('--marquee-offset', `${setWidth}px`);
       });
 
+      // When returning to the tab, browsers have advanced the animation clock while
+      // it was throttled, causing a jerk. Reset all tracks to a clean start.
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+          document.querySelectorAll('.marquee-track').forEach(track => {
+            track.style.animation = 'none';
+            void track.offsetWidth; // force reflow so the browser registers the reset
+            track.style.animation = '';
+          });
+        }
+      });
+
       if (nav) {
         window.addEventListener('scroll', () => {
           nav.classList.toggle('is-scrolled', window.scrollY > 20);
