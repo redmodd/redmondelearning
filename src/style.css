@@ -808,6 +808,7 @@ a { text-decoration: none; color: inherit; }
   to   { transform: translateX(0); }
 }
 
+
 @media (prefers-reduced-motion: reduce) {
   .marquee-track--fwd,
   .marquee-track--rev {
@@ -828,6 +829,13 @@ a { text-decoration: none; color: inherit; }
   padding: var(--sp-2) var(--sp-3);
   width: 140px;
   flex-shrink: 0;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+a.marquee-item:hover {
+  box-shadow: var(--shadow-md, 0 4px 12px rgba(0,0,0,.12));
 }
 
 .marquee-item img {
