@@ -394,29 +394,65 @@
         });
       });
 
-      document.querySelectorAll('.marquee-track').forEach(track => {
-        const originals = [...track.children];
+      function resetAnimation(track) {
+        track.style.animation = 'none';
+        void track.offsetWidth;
+        track.style.animation = '';
+      }
+
+      function initTrack(track, originals) {
         const gap = parseFloat(getComputedStyle(track).gap) || 0;
 
-        // Clone until track fills at least 2× the viewport (guarantees no blank space)
+        // Remove any previously cloned items, keeping only the originals
+        while (track.children.length > originals.length) {
+          track.removeChild(track.lastChild);
+        }
+
+        // Clone until the track fills at least 2× the viewport
         while (track.scrollWidth < window.innerWidth * 2) {
           originals.forEach(item => track.appendChild(item.cloneNode(true)));
         }
 
-        // Measure the exact original-set width including the trailing gap
+        // Set the exact pixel offset for one original set (including trailing gap)
         const setWidth = originals.reduce((w, el) => w + el.offsetWidth + gap, 0);
         track.style.setProperty('--marquee-offset', `${setWidth}px`);
+        resetAnimation(track);
+      }
+
+      const marqueeData = [];
+      document.querySelectorAll('.marquee-track').forEach(track => {
+        const originals = [...track.children];
+        initTrack(track, originals);
+        marqueeData.push({ track, originals });
       });
 
+      // Re-init on resize in case the viewport grew wider than the cloned content
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          marqueeData.forEach(({ track, originals }) => initTrack(track, originals));
+        }, 150);
+      }, { passive: true });
+
+      // Pause when the section scrolls out of view; resume in place on re-entry
+      // Uses a CSS class so there are no inline styles to conflict with the hover rule
+      const marqueeOuters = document.querySelectorAll('.marquee-outer');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            const track = entry.target.querySelector('.marquee-track');
+            track.classList.toggle('is-paused', !entry.isIntersecting);
+          });
+        }, { threshold: 0 });
+        marqueeOuters.forEach(outer => observer.observe(outer));
+      }
+
       // When returning to the tab, browsers have advanced the animation clock while
-      // it was throttled, causing a jerk. Reset all tracks to a clean start.
+      // throttled — reset all visible tracks to a clean start.
       document.addEventListener('visibilitychange', () => {
         if (!document.hidden) {
-          document.querySelectorAll('.marquee-track').forEach(track => {
-            track.style.animation = 'none';
-            void track.offsetWidth; // force reflow so the browser registers the reset
-            track.style.animation = '';
-          });
+          marqueeData.forEach(({ track }) => resetAnimation(track));
         }
       });
 

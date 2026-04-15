@@ -839,7 +839,8 @@ a { text-decoration: none; color: inherit; }
 }
 
 
-.marquee-outer:hover .marquee-track {
+.marquee-outer:hover .marquee-track,
+.marquee-track.is-paused {
   animation-play-state: paused;
 }
 
