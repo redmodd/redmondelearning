@@ -748,6 +748,36 @@ a { text-decoration: none; color: inherit; }
   opacity: 0.75;
 }
 
+.tool-link {
+  position: relative;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.tool-link:hover img {
+  opacity: 1;
+}
+
+.tool-tooltip {
+  position: fixed;
+  transform: translate(-50%, calc(-100% - 6px));
+  background: var(--teal-darker);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 1000;
+}
+
+.tool-tooltip.is-visible {
+  opacity: 1;
+}
+
 .portfolio-card__cta {
   display: flex;
   align-items: center;
