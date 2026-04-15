@@ -326,27 +326,12 @@
             <a class="marquee-item" href="https://www.adobe.com/creativecloud.html" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/CreativeCloud.webp" alt="" /><span>Adobe Creative Cloud</span></a>
             <a class="marquee-item" href="https://www.techsmith.com/camtasia/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/Camtasia.webp" alt="" /><span>Camtasia</span></a>
             <a class="marquee-item" href="https://www.audacityteam.org/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/Audacity.webp" alt="" /><span>Audacity</span></a>
-            <!-- duplicate for seamless loop -->
-            <a class="marquee-item" href="https://www.dominknow.com/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/dominknow.webp" alt="" /><span>dominKnow | ONE</span></a>
-            <a class="marquee-item" href="https://articulate.com/360" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/articulate360.webp" alt="" /><span>Articulate 360</span></a>
-            <a class="marquee-item" href="https://www.vyond.com/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/VYOND.webp" alt="" /><span>VYOND</span></a>
-            <a class="marquee-item" href="https://www.adobe.com/creativecloud.html" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/CreativeCloud.webp" alt="" /><span>Adobe Creative Cloud</span></a>
-            <a class="marquee-item" href="https://www.techsmith.com/camtasia/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/Camtasia.webp" alt="" /><span>Camtasia</span></a>
-            <a class="marquee-item" href="https://www.audacityteam.org/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/Audacity.webp" alt="" /><span>Audacity</span></a>
           </div>
         </div>
 
         <!-- Row 2: reverse scroll -->
         <div class="marquee-outer" aria-hidden="true">
           <div class="marquee-track marquee-track--rev">
-            <a class="marquee-item" href="https://developer.mozilla.org/en-US/docs/Learn/HTML" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/HTML_CSS.webp" alt="" /><span>HTML &amp; CSS</span></a>
-            <a class="marquee-item" href="https://xapi.com/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/xAPI.webp" alt="" /><span>xAPI</span></a>
-            <a class="marquee-item" href="https://scorm.com/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/SCORM.webp" alt="" /><span>SCORM</span></a>
-            <a class="marquee-item" href="https://wordpress.org/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/WordPress.webp" alt="" /><span>WordPress</span></a>
-            <a class="marquee-item" href="https://www.learndash.com/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/LearnDash.webp" alt="" /><span>LearnDash</span></a>
-            <a class="marquee-item" href="https://www.buddyboss.com/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/BuddyBoss.webp" alt="" /><span>BuddyBoss</span></a>
-            <div class="marquee-item"><img src="/src/images/LMSs.webp" alt="" /><span>Various LMSs &amp; LXPs</span></div>
-            <!-- duplicate for seamless loop -->
             <a class="marquee-item" href="https://developer.mozilla.org/en-US/docs/Learn/HTML" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/HTML_CSS.webp" alt="" /><span>HTML &amp; CSS</span></a>
             <a class="marquee-item" href="https://xapi.com/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/xAPI.webp" alt="" /><span>xAPI</span></a>
             <a class="marquee-item" href="https://scorm.com/" target="_blank" rel="noreferrer" tabindex="-1"><img src="/src/images/SCORM.webp" alt="" /><span>SCORM</span></a>
@@ -409,11 +394,79 @@
         });
       });
 
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function fillTrack(track, originals) {
+        const gap = parseFloat(getComputedStyle(track).gap) || 0;
+        while (track.children.length > originals.length) track.removeChild(track.lastChild);
+        while (track.scrollWidth < window.innerWidth * 2) {
+          originals.forEach(item => track.appendChild(item.cloneNode(true)));
+        }
+        return originals.reduce((w, el) => w + el.offsetWidth + gap, 0);
+      }
+
+      // Single source of truth for play/pause. Every event updates its flag then calls this.
+      // We toggle playbackRate instead of calling pause()/play(): on pause/play across a
+      // hidden-tab boundary, Chrome can jump the animation when reconciling compositor and
+      // main-thread timelines. Keeping the animation "running" at rate 0 sidesteps that.
+      function syncAnim(data) {
+        const paused = prefersReducedMotion || data.hovered || data.offScreen || document.hidden;
+        data.anim.playbackRate = paused ? 0 : 1;
+      }
+
+      const marqueeData = [];
       document.querySelectorAll('.marquee-outer').forEach(outer => {
         const track = outer.querySelector('.marquee-track');
-        outer.addEventListener('mouseenter', () => { track.style.animationPlayState = 'paused'; });
-        outer.addEventListener('mouseleave', () => { track.style.animationPlayState = 'running'; });
+        const originals = [...track.children];
+        const setWidth = fillTrack(track, originals);
+        const isFwd = track.classList.contains('marquee-track--fwd');
+
+        const anim = track.animate(
+          isFwd
+            ? [{ transform: 'translateX(0)' }, { transform: `translateX(-${setWidth}px)` }]
+            : [{ transform: `translateX(-${setWidth}px)` }, { transform: 'translateX(0)' }],
+          { duration: 38000, iterations: Infinity, easing: 'linear' }
+        );
+
+        const data = { outer, track, originals, anim, hovered: false, offScreen: false };
+        marqueeData.push(data);
+
+        outer.addEventListener('mouseenter', () => { data.hovered = true;  syncAnim(data); });
+        outer.addEventListener('mouseleave', () => { data.hovered = false; syncAnim(data); });
       });
+
+      // Pause when scrolled out of view; resume in place when back
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            const data = marqueeData.find(d => d.outer === entry.target);
+            if (!data) return;
+            data.offScreen = !entry.isIntersecting;
+            syncAnim(data);
+          });
+        }, { threshold: 0 });
+        marqueeData.forEach(({ outer }) => observer.observe(outer));
+      }
+
+      // Tab/window visibility change — syncAnim reads document.hidden directly.
+      // On return, resync hovered from the real pointer state: mouseenter/leave
+      // don't fire across tab switches, so a stale flag can get stuck either way.
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+          marqueeData.forEach(data => { data.hovered = data.outer.matches(':hover'); });
+        }
+        marqueeData.forEach(data => syncAnim(data));
+      });
+
+      // On resize, adjust clone count — animation continues uninterrupted
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          marqueeData.forEach(({ track, originals }) => fillTrack(track, originals));
+        }, 150);
+      }, { passive: true });
+
 
       if (nav) {
         window.addEventListener('scroll', () => {

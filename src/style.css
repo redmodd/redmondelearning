@@ -820,31 +820,6 @@ a { text-decoration: none; color: inherit; }
   padding: var(--sp-1) 0;
 }
 
-.marquee-track--fwd {
-  animation: marquee-fwd 38s linear infinite;
-}
-
-.marquee-track--rev {
-  animation: marquee-rev 38s linear infinite;
-}
-
-@keyframes marquee-fwd {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-@keyframes marquee-rev {
-  from { transform: translateX(-50%); }
-  to   { transform: translateX(0); }
-}
-
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track--fwd,
-  .marquee-track--rev {
-    animation-play-state: paused;
-  }
-}
 
 .marquee-item {
   display: flex;
